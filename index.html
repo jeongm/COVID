@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8"/>
+        <link rel="stylesheet" href="./style.css"/>
+        <script type="text/javascript" src="./navigator.js"></script>
+        <script type="text/javascript" src="./api.js"></script>
+        <script type="text/javascript" src="./main.js"></script>
+        <title>코로나19 현황</title>
+    </head>
+    <body>
+        <div id="background"></div>
+        <main>
+
+            <nav>
+                <button id="btn-prev">이전</button>
+                <button id="btn-next">다음</button>
+                <button id="btn-today">오늘</button>
+            </nav>
+            
+            <header id ="covidContainer">
+                <h2 id = "covidDate">코로나19(COVID-19) &nbsp;&nbsp;</h2>
+                <ul>
+                    <li>
+                        <p><strong>누적 사망자수</strong></p>
+                        <p id = "cd1"></p>
+                    </li>
+                    <li>
+                        <p><strong>누적 확진자수</strong></p>
+                        <p id = "cd2"></p>
+                    </li>
+                    <li>
+                        <p><strong>누적 검사수</strong></p>
+                        <p id = "cd3"></p>
+                    </li>
+                    <li>
+                        <p><strong>인구 10만명당 사망</strong></p>
+                        <p id = "cd4"></p>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <p><strong>일일 확진</strong></p>
+                        <p id = "cd5"></p>
+                    </li>
+                    <li>
+                        <p><strong>일일 사망</strong></p>
+                        <p id = "cd6"></p>
+                        
+                    </li>
+                    <li>
+                        <p><strong>일일 신규입원</strong></p>
+                        <p id = "cd7"></p>
+                    </li>
+                    <li>
+                        <p><strong>일일 재원 위중증</strong></p>
+                        <p id = "cd8"></p>
+                    </li>
+                </ul>
+            </header>
+            
+            <content>
+                <table id="covidTable">
+                    <caption><h2>연령대별</h2></caption>
+                    <thead>
+                        <tr>
+                            <th>구분</th>
+                            <th>치명율</th>
+                            <th>사망자수</th>
+                            <th>확진자수</th>
+                            <th>사망율</th>
+                            <th>확진율</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                </table>
+            </content>
+
+        </main>
+        <div id = "loading">
+
+            <h1>Loading
+                <div class="dots">
+                    <span class="dot z"></span><span class="dot f"></span><span class="dot s"></span><span class="dot t"><span class="dot l"></span></span>
+                </div>
+            </h1>
+
+        </div>
+            
+
+    </body>
+
+</html>
