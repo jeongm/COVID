@@ -16,9 +16,12 @@
 
 main {
     width: 1000px;
+    min-height: 900px;;
     margin: 0 auto;
     z-index: 10;
     padding-top: 20px;
+    padding-bottom: 50px;
+
 }
 
 nav {
@@ -212,39 +215,5 @@ h1 {
     }
   }
   
-  .abs-twitter {
-    position: fixed;
-    right: calc(24px + 0.6vw);
-    top: calc(22px + 0.6vw);
-    transform: translate(-8px, 4px);
-    opacity: 0;
-    transition: 0.3s ease-in;
-  }
-  .abs-twitter--show {
-    transform: translate(0, 0);
-    opacity: 1;
-    -webkit-animation: birdie 1s 0.8s linear infinite;
-            animation: birdie 1s 0.8s linear infinite;
-  }
-  @-webkit-keyframes birdie {
-    13% {
-      transform: rotate(14deg);
-    }
-    26% {
-      transform: rotate(28deg);
-    }
-    100% {
-      transform: rotate(0deg);
-    }
-  }
-  @keyframes birdie {
-    13% {
-      transform: rotate(14deg);
-    }
-    26% {
-      transform: rotate(28deg);
-    }
-    100% {
-      transform: rotate(0deg);
-    }
-  }
+
+  
