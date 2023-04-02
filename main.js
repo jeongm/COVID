@@ -11,9 +11,16 @@ const covApi = covidApi();
         let dots = $(".dots");
         animate(dots, "dots--animate");
 
+        // document.getElementById("loading").style.display = 'none';
         displayDate(navi.getYear(),navi.getMonth(),navi.getDay());
-        displayCovidBoard();
-        displayCovidTable();
+        try {
+            displayCovidBoard();
+            displayCovidTable();
+
+        }catch(e) {
+
+        }
+        
     });
 
     function displayDate(targetYear,targetMonth,targetDay) {
@@ -26,32 +33,39 @@ const covApi = covidApi();
     async function displayCovidBoard() {
         //statusDt 뭐야 20200425형식
         const statusDt = navi.getYear() + navi.converToZeroMonthAndDay(navi.getMonth())+navi.converToZeroMonthAndDay(navi.getDay())
-        const accCovid = await covApi.getAccumulateCovid(statusDt);
         const todayCovid = await covApi.getCovidKorInfo();
+        const accCovid = await covApi.getAccumulateCovid(statusDt);
 
-        const cd1= document.getElementById("cd1"); //누적 사망자
-        cd1.innerText = convertNumberComma(accCovid.gPntCnt);
+        if(accCovid) {
+            const cd1= document.getElementById("cd1"); //누적 사망자
+            cd1.innerText = convertNumberComma(accCovid.gPntCnt);
+    
+            const cd2= document.getElementById("cd2"); //누적 확진자
+            cd2.innerText = convertNumberComma(accCovid.hPntCnt);
+    
+            const cd3= document.getElementById("cd3"); //누적 검사자
+            cd3.innerText = convertNumberComma(accCovid.accExamCnt);
+        }
 
-        const cd2= document.getElementById("cd2"); //누적 확진자
-        cd2.innerText = convertNumberComma(accCovid.hPntCnt);
+        if(todayCovid) {
+            const cd4= document.getElementById("cd4"); 
+            cd4.innerText = todayCovid.rate_deaths;
+    
+            const cd5= document.getElementById("cd5"); //일일 확진
+            cd5.innerText = convertNumberComma(todayCovid.cnt_confirmations);
+    
+            const cd6= document.getElementById("cd6");//일일 사망
+            cd6.innerText = convertNumberComma(todayCovid.cnt_deaths);
+    
+            const cd7= document.getElementById("cd7");
+            cd7.innerText = convertNumberComma(todayCovid.cnt_hospitalizations);//일일 신규 입원
+    
+            const cd8= document.getElementById("cd8");
+            cd8.innerText = todayCovid.rate_severe_symptoms;// 일일 재원 위중증
 
-        const cd3= document.getElementById("cd3"); //누적 검사자
-        cd3.innerText = convertNumberComma(accCovid.accExamCnt);
+        }
 
-        const cd4= document.getElementById("cd4"); 
-        cd4.innerText = todayCovid.rate_deaths;
 
-        const cd5= document.getElementById("cd5"); //일일 확진
-        cd5.innerText = convertNumberComma(todayCovid.cnt_confirmations);
-
-        const cd6= document.getElementById("cd6");//일일 사망
-        cd6.innerText = convertNumberComma(todayCovid.cnt_deaths);
-
-        const cd7= document.getElementById("cd7");
-        cd7.innerText = convertNumberComma(todayCovid.cnt_hospitalizations);//일일 신규 입원
-
-        const cd8= document.getElementById("cd8");
-        cd8.innerText = todayCovid.rate_severe_symptoms;// 일일 재원 위중증
     }
 
     async function displayCovidTable() {
@@ -87,6 +101,7 @@ const covApi = covidApi();
             tr.append(td1,td2,td3,td4,td5,td6);
             tbody.append(tr);
         }
+        document.getElementById("loading").style.display = 'none';
         
     }
 
