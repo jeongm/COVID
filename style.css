@@ -57,10 +57,13 @@ h2 {
     justify-content: center;
     align-items: center;
 }
+#covidContainer h2 {
+    margin-bottom: 10px;
+}
 
 #covidContainer ul {
     display: flex;
-    margin-top: 20px;
+    margin: 20px 20px 20px 20px;
 
 }
 
